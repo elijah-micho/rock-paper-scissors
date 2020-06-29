@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+
+    </head>
+
+    <body>
+        <script>
+            function computerPlay() {
+                const num = Math.random();
+
+                if(num <= 0.33){
+                    return 'Rock'
+                }else if(num >= 0.66){
+                    return 'Scissors'
+                }else{
+                    return 'Paper'
+                }    
+            }
+
+            var playerScore = 0;
+            var computerScore = 0;
+
+            function letsPlay(playerS, computerS){
+                if(computerS == 'Rock'){
+                    if(playerS == 'Paper'){
+                        playerScore++
+                        return 'You Win! Paper beats Rock'
+                    }else if(playerS == 'Rock'){
+                        return 'Draw'
+                    }else{
+                        computerScore++
+                        return 'You Lose! Rock beats Scissors'
+                    }
+                }else if(computerS == 'Paper'){
+                    if(playerS == 'Scissors'){
+                        playerScore++
+                        return 'You Win! Scissors beats Paper'
+                    }else if(playerS == 'Paper'){
+                        return 'Draw'
+                    }else{
+                        computerScore++
+                        return 'You Lose! Paper beats Rock'
+                    }
+                }else{
+                    if(playerS == 'Rock'){
+                        playerScore++
+                        return 'You Win! Rock beats Scissors'
+                    }else if(playerS == 'Scissors'){
+                        return 'Draw'
+                    }else{
+                        computerScore++
+                        return 'You Lose! Scissors beats Paper'
+                    }
+                }
+            }
+
+            function game(){
+                
+                for(let i = 0; i < 5; i++){
+                    const playerSelection = prompt('Choose Rock, Paper or Scissors');
+                    const computerSelection = computerPlay()
+                    console.log(letsPlay(playerSelection, computerSelection));
+                }
+
+                console.log(`Player Score: ${playerScore}`, `Computer Score: ${computerScore}`, playerScore>computerScore? 'You Win': 'You Lose')      
+            }
+            
+        </script>
+    </body>
+</html>
