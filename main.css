@@ -1,0 +1,33 @@
+#container{
+    position: relative;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 300px;
+    width: 300px;
+    border: 2px solid black;
+    border-radius: 3px;
+}
+
+#container #buttons-box{
+    position: fixed;
+    z-index: 2;
+}
+
+#container > span{
+    margin: 15px;
+}
+
+#results-box{
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+}
+
+
+#results-box > span{
+    display: block;
+    margin: 5px;
+}

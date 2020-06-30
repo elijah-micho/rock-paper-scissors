@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <link href="main.css" rel="stylesheet" type="text/css" media="all"/>
+        <link href="reset.css" rel="stylesheet" type="text/css" media="all"/>
+    </head>
+
+    <body>
+        <div id="container">
+            <div id="buttons-box">
+                <button id="Rock">Rock</button>
+                <button id="Paper">Paper</button>
+                <button id="Scissors">Scissors</button>
+            </div>
+
+            <div id="results-box">
+
+            </div>
+        </div>
+        
+
+
+        <script>
+            var playerScore = 0;
+            var computerScore = 0;
+            var button = document.querySelectorAll('button');
+            const resultsBox = document.querySelector('#results-box')
+
+            button = [...button]
+
+            function computerPlay() {
+                const num = Math.random();
+
+                if(num <= 0.33){
+                    return 'Rock'
+                }else if(num >= 0.66){
+                    return 'Scissors'
+                }else{
+                    return 'Paper'
+                }    
+            }
+
+            button.forEach((element) =>{
+                element.addEventListener('click', () => {
+                    const results = document.createElement('span');
+
+                    const computerChoice = computerPlay();
+                    const playerChoice = element.getAttribute('id');
+
+
+                    if(playerScore == 5 || computerScore == 5){
+                        results.textContent = 'Game over!'
+                        return
+                    }else{
+                        letsPlay(playerChoice, computerChoice)
+                        results.textContent = `Player: ${playerChoice}, 
+                                            Computer: ${computerChoice}.
+                                            Score: Player = ${playerScore}
+                                            Computer = ${computerScore}` 
+                    }
+
+                    resultsBox.appendChild(results)
+                    })
+            })
+            
+
+            function letsPlay(playerS, computerS){
+
+                if(computerS == 'Rock'){
+                    if(playerS == 'Paper'){
+                        playerScore++
+                        
+                    }else if(playerS == 'Rock'){
+                        
+                    }else{
+                        computerScore++
+                        
+                    }
+                }else if(computerS == 'Paper'){
+                    if(playerS == 'Scissors'){
+                        playerScore++
+                        
+                    }else if(playerS == 'Paper'){
+                    }else{
+                        computerScore++
+                    }
+                }else{
+                    if(playerS == 'Rock'){
+                        playerScore++
+                        
+                    }else if(playerS == 'Scissors'){
+                        
+                    }else{
+                        computerScore++
+                        
+                    }
+                }
+            }
+            
+        </script>
+    </body>
+</html>
